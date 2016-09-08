@@ -5,7 +5,18 @@ class Player < ApplicationRecord
 
 	validates :name, presence: true, uniqueness: true
 
-	before_save :set_initial
+	before_create :set_initial
+
+
+	def self.set_balance(jugador, ganancia)
+		jugador.money = jugador.money + ganancia
+		jugador.save
+	end
+
+	def self.increase_balance(jugador, extra)
+		jugador.money = jugador.money + extra
+		jugador.save
+	end
 
 
 	def set_initial

@@ -3,7 +3,13 @@
 
 <div class="game-container">
 	<div class="players-container">
-		<table class="table">
+
+		<p>Resultado última ronda: <%=@color.to_s%></p>
+		<p># Ronda: <%=@rondas%></p>
+
+		<p>Pronóstico del Tiempo: <%=@pronostico%></p>
+
+		<table class="table game">
 		    <thead>
 		      <tr>
 		        <th>Name</th>
@@ -13,12 +19,12 @@
 		      </tr>
 		    </thead>
 		    <tbody>
-		    	<% @apuestas.each do |p| %>
+		    	<% @apuestas.each do |a| %>
 			      <tr class="success">
-			        <td>p.player.name</td>
-			        <td>p.player.money</td>
-			        <td>p.color</td>
-			       	<td>p.getResult(@color.color) </td>p
+			        <td>	<%=a.player.name%>	</td>
+			        <td>	<%=a.player.money%>	</td>
+			        <td>	<%=a.color%>	</td>
+			       	<td>	<%=a.getResult(@color)%>	</td>
 			      </tr>
 			    <% end %>
 		    </tbody>
@@ -26,19 +32,42 @@
 
 	</div>
 
-	<div class="play-container">
-            
+	<div class="action-container">
+         <%= link_to 'Add Player', new_player_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal', 'data-backdrop' => "false", 'data-keyboard' => "false"}  %>   
 	</div>
 
-	<div class="summary-last-play">
-            
-	</div>
+	<%= countdown Time.now + 28.hours %>
             
 </div>
 
 
 
-<%= link_to 'Add Player', new_player_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal', 'data-backdrop' => "false", 'data-keyboard' => "false"}  %>
+<div class="weather-container">
+	<div class="forecast-container">
+
+		<p>Weather Forecast, Upcoming 7 Days</p>
+
+		<table class="table weather">
+		    <thead>
+		      <tr>
+		        <th>Day</th>
+		        <th>Forecast</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+			    	<% @clima[0..6].each do |c| %>
+				      <tr class="success">
+				        <td>	<%=c['day']%>	</td>
+				        <td>	<%=c['text']%>	</td>
+				      </tr>
+				    <% end %>
+		    </tbody>
+		</table>
+
+	</div>
+
+            
+</div>
 
 
 

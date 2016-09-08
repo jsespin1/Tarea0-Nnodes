@@ -13,7 +13,7 @@ class PlayerController < ApplicationController
 		puts "PARAMETROS: " << params.inspect
 		respond_to do |format|
 	      if @player.save
-	      	flash[:success] = 'Thanks for adding new shop.'
+	      	flash[:success] = 'Se ha creado jugador'
 	        #format.js { render "create" }
 	        format.html { redirect_to home_path()}#, notice: 'Task was successfully created.' }
 	        #format.json { render json: @player, status: :created, location: @player }

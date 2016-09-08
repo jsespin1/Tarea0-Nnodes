@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#Se instancia la ruleta principal
+Roulette.create(:last_increase => Time.now)
