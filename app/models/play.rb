@@ -4,6 +4,18 @@ class Play < ApplicationRecord
 
   before_create :set_color
 
+  def set_bet(jugador)
+  	#Si tienen menos de 1000, va All-In
+  	apuesta = 0
+  	if jugador.money > 1000
+  		#Si no hay lluvia, se apuesta entre el 8% y el 15%
+  		aleatorio = rand(8..15)
+  		apuesta = (aleatorio/100)*jugador.money
+  	else
+  		apuesta = jugador.money
+  	self.bet = apuesta
+  end
+
   def getResult(color_resultado)
   	color = self.color
   	apuesta = self.bet
