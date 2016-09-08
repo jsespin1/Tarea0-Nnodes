@@ -1,0 +1,16 @@
+
+$('<%= j render "form", title: "Crear Jugador" %>').modal();
+
+$(window).on('shown.bs.modal', function() {
+
+	$(window).on('hidden.bs.modal', function() { 
+		$('#modal').modal('hide');
+		$('.in').remove();
+		$('#modal').remove();
+ 	});
+
+});
+
+
+
+

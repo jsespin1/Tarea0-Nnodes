@@ -1,1 +1,49 @@
-<h1>Hello, Nnodes!</h1>
+<h1 class="hola">Hello, Nnodes!</h1>
+
+
+<div class="game-container">
+	<div class="players-container">
+		<table class="table">
+		    <thead>
+		      <tr>
+		        <th>Name</th>
+		        <th>Balance</th>
+		        <th>Last Bet</th>
+		        <th>Last Turn Earnings</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    	<% @plays.each do |p| %>
+			      <tr class="success">
+			        <td>p.player.name</td>
+			        <td>p.player.money</td>
+			        <td>p.color</td>
+			       	<td>p.getResult(@color.color) </td>p
+			      </tr>
+			    <% end %>
+		    </tbody>
+		</table>
+
+	</div>
+
+	<div class="play-container">
+            
+	</div>
+
+	<div class="summary-last-play">
+            
+	</div>
+            
+</div>
+
+
+
+<%= link_to 'Add Player', new_player_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal', 'data-backdrop' => "false", 'data-keyboard' => "false"}  %>
+
+
+
+
+
+
+
+
