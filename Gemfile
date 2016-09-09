@@ -35,6 +35,8 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'autoprefixer-rails'
 gem 'httparty'
 gem 'countdown'
+gem 'yahoo_weatherman'
+gem 'weather-api'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,18 @@
+<table class="table players">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Money</th>
+        <th>Active</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% @players.each do |a| %>
+	      <tr class="success">
+	        <td>	<%=a.name%>	</td>
+	        <td>	<%=a.money%>	</td>
+	        <td>	<%=a.active%>	</td>
+	      </tr>
+	    <% end %>
+    </tbody>
+</table>

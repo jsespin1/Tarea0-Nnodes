@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   	#puts "Jugadores: " + jugadores.inspect
   	@apuestas = Array.new
   	#Consultamos a API si lloverá durante los próximos 7 días
-  	habra_lluvia = Weather.forecast_rain
+  	habra_lluvia = Weather2.forecast_rain
   	jugadores.each do |j|
 	  bet = Play.create(:player => j, :round => @nueva_ronda)
 	  bet.set_bet(j, habra_lluvia)
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   		#Play.set_balance(a, @color)
 	end
 	#Arreglo json con las predicciones por dia. Atributos: code,date,day,text
-	@clima = Weather.get_forecast
+	@clima = Weather2.get_forecast
 	@pronostico = ""
 	if habra_lluvia
 		@pronostico = "Se pronostica lluvia dentro de los próximos 7 días. Apuestas conservadoras."
