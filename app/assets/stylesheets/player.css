@@ -5,3 +5,7 @@
 .modal-title{
 	font-size: 21px;
 }
+
+td.check{
+	cursor: grab;
+}

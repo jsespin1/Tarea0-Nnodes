@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   get 'roulette/increase' => 'roulette#increase', as: 'roulette_increase_balance'
 
+  get 'roulette/new_round' => 'roulette#new_round', as: 'roulette_new_round'
+
 end

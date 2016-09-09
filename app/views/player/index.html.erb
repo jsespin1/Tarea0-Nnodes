@@ -4,15 +4,19 @@
         <th>Name</th>
         <th>Money</th>
         <th>Active</th>
+        <th>Active</th>
       </tr>
     </thead>
     <tbody>
     	<% @players.each do |a| %>
 	      <tr class="success">
-	        <td>	<%=a.name%>	</td>
-	        <td>	<%=a.money%>	</td>
-	        <td>	<%=a.active%>	</td>
+	        <td >	<%= best_in_place a, :name, :as => :input %>	</td>
+	        <td>	<%= best_in_place a, :money, :as => :input %>	</td>
+	        <td class="check">	<%= best_in_place a, :active, as: :checkbox, collection: {false: "Nope", true: "Yep"} %>	</td>
+	        <td><%= link_to 'Destroy', a, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	      </tr>
 	    <% end %>
     </tbody>
 </table>
+
+<%= link_to 'Home', home_path, :html => { :class => "btn" } %>

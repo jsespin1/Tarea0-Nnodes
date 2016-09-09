@@ -14,7 +14,6 @@ class PlayerController < ApplicationController
 
 	def create
 		@player = Player.new(params[:player].permit(:name))
-		puts "PARAMETROS: " << params.inspect
 		respond_to do |format|
 	      if @player.save
 	      	flash[:success] = 'Se ha creado jugador'
@@ -27,6 +26,21 @@ class PlayerController < ApplicationController
 	        format.json { render json: @player.errors, status: :unprocessable_entity }
 	      end
 	    end
+	end
+
+
+	def update
+	  @player = Player.find params[:id]
+
+	  respond_to do |format|
+	    if @player.update_attributes(params[:player].permit(:name, :money, :active))
+	      format.html { redirect_to(@player, :notice => 'Player was successfully updated.') }
+	      format.json { respond_with_bip(@player) }
+	    else
+	      format.html { render :action => "edit" }
+	      format.json { respond_with_bip(@player) }
+	    end
+	  end
 	end
 
 end

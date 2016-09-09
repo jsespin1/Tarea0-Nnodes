@@ -11,37 +11,23 @@
 // about supported directives.
 //
 //= require jquery
+//= require best_in_place
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
+
 var time = new Date().getTime();
 
 function refresh() {
  modal = $('#modal').hasClass('in');
- if( (new Date().getTime() - time >= 180000) && (!modal)) 
-     window.location.reload(true);
- else 
-     setTimeout(refresh, 3000);
-}
-
-setTimeout(refresh, 3000);
-
-
-//Lo siguiente es para agregar $10.000 cada 24 horas a cada jugador activo
-
-$(function(){
-
-	var $cardLinks = $('h1.hola');
-
-	//Le asociamos un evento a la variable JQuery. En click se ejecuta la funcion 
-	//definida y recibe como parámetro el evento (ev)
-	$( document ).ready(function() {
-		ev.preventDefault();
-
-		var $link = $(this);
-		var sourceUrl = 'roulette/increase';
+ if( (new Date().getTime() - time >= 6000) && (!modal)){ 
+    var sourceUrl = 'roulette/new_round';
 		$.ajax({
 			"url": sourceUrl,
 			"success": function(data,ts, jg){
@@ -52,15 +38,17 @@ $(function(){
 			"error": function(jg, st, er){
 				console.log("Error: (", jg, st, er);
 			}
-		});
-
-		//alert("Cada Jugador Recibirá 10.000 a su Balance");
-
 	});
+	}
+ else {
+     setTimeout(refresh, 100);
+ }
+}
 
-});
+setTimeout(refresh, 100);
 
 
+//Lo siguiente es para agregar $10.000 cada 24 horas a cada jugador active
 
 
 $( document ).ready(function() {
@@ -78,3 +66,6 @@ $( document ).ready(function() {
 			}
 		});
 	});
+
+
+

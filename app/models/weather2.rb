@@ -36,7 +36,6 @@ class Weather2 < ApplicationRecord
 	  	#puts "Respuesta Forecast JSON: " + respuesta.parsed_response['query']['results']['channel']['item']['forecast'].inspect
 	  	#client = Weatherman::Client.new
 		#respuesta = client.lookup_by_woeid 455821
-	  	puts "RESPUESTA -> " << respuesta.forecasts.inspect
 	  	respuesta.forecasts
 	end
 

@@ -7,4 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #Se instancia la ruleta principal
-Roulette.create(:last_increase => Time.now)
+Roulette.create(:last_increase => Time.now, :last_round => Time.now)

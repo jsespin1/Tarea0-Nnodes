@@ -41,6 +41,9 @@ GEM
     arel (7.1.1)
     autoprefixer-rails (6.4.1)
       execjs
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -176,6 +179,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
+  best_in_place (~> 3.0.1)
   bootstrap-sass (~> 3.3.7)
   byebug
   coffee-rails (~> 4.2)

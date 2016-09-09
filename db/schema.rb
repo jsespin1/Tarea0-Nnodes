@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908222042) do
+ActiveRecord::Schema.define(version: 20160909215526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,12 +40,14 @@ ActiveRecord::Schema.define(version: 20160908222042) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.datetime "last_increase"
+    t.datetime "last_round"
   end
 
   create_table "rounds", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "roulette_id"
+    t.string   "last_color"
     t.index ["roulette_id"], name: "index_rounds_on_roulette_id", using: :btree
   end
 
