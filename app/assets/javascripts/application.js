@@ -26,7 +26,6 @@ var time = new Date().getTime();
 
 function refresh() {
  modal = $('#modal').hasClass('in');
- if( (new Date().getTime() - time >= 6000) && (!modal)){ 
     var sourceUrl = 'roulette/new_round';
 		$.ajax({
 			"url": sourceUrl,
@@ -39,13 +38,10 @@ function refresh() {
 				console.log("Error: (", jg, st, er);
 			}
 	});
-	}
- else {
-     setTimeout(refresh, 100);
- }
+    setTimeout(refresh, 3000);
 }
 
-setTimeout(refresh, 100);
+setTimeout(refresh, 3000);
 
 
 //Lo siguiente es para agregar $10.000 cada 24 horas a cada jugador active

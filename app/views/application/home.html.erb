@@ -9,6 +9,9 @@
 
 		<p>Pronóstico del Tiempo: <%=@pronostico%></p>
 
+		<p>Last Round: <%= @ruleta.last_round.strftime("%Y-%m-%d %H:%M:%S") %></p>
+		<p>Next Round: <%= (@ruleta.last_round+3.minutes).strftime("%Y-%m-%d %H:%M:%S") %></p>
+
 		<table class="table game">
 		    <thead>
 		      <tr>

@@ -38,6 +38,7 @@ gem 'countdown'
 gem 'yahoo_weatherman'
 gem 'weather-api'
 gem 'best_in_place', '~> 3.0.1'
+gem "responders"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

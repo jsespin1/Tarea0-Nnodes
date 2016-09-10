@@ -1,9 +1,11 @@
 class RouletteController < ApplicationController
 
+	respond_to :js
+
 	def increase
 		ruleta = Roulette.first
 		last_increase = ruleta.last_increase
-		if last_increase.utc < (Time.now - 24.hours).utc
+		if last_increase.utc < (Time.now - 24.hours - 3.hours).utc
 			ruleta.last_increase = Time.now
 			ruleta.save
 			jugadores = Player.where(active:true)
@@ -16,21 +18,23 @@ class RouletteController < ApplicationController
 	def new_round
 		ruleta = Roulette.first
 		last_round = ruleta.last_round
-		if last_round.utc < (Time.now - 3.seconds).utc
-			ruleta.last_round = Time.now
+		if last_round.utc < (Time.now  - 3.hours - 3.minutes).utc
+			ruleta.last_round = Time.now - 3.hours
 			ruleta.save
 			Roulette.new_round
 		end
-		path = request.host
+		path = request.original_url
 		puts "PATH " << path.to_s
 		#Si esta en el home, se actualiza la página
 		respond_to do |format|
-			if path.include? "/"
-				format.js { render "new_round"}
+			if last_round.utc < (Time.now  - 3.hours - 3.minutes).utc
+				format.js { render "new_round", notice: 'Last Round: ' << Time.now.strftime("%Y-%m-%d %H:%M:%S")}	
 			else
-				#Si esta en otra vista, imprime la alerta
-			    format.js {render inline: "location.reload();" }
+				format.js { render "nothing", notice: 'Last Round: ' << Time.now.strftime("%Y-%m-%d %H:%M:%S")}	
 			end
+			#format.js {render inline: "location.reload();" }
 		end
 	end
+
+
 end

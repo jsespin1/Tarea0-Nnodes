@@ -19,4 +19,7 @@
     </tbody>
 </table>
 
+<p>Last Round: <%= @ruleta.last_round.strftime("%Y-%m-%d %H:%M:%S") %></p>
+<p>Next Round: <%= (@ruleta.last_round+3.minutes).strftime("%Y-%m-%d %H:%M:%S") %></p>
+
 <%= link_to 'Home', home_path, :html => { :class => "btn" } %>

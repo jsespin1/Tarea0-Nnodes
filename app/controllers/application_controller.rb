@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
 
 
   def home
-  	ruleta = Roulette.first
-  	@rondas = ruleta.rounds.length
+  	@ruleta = Roulette.first
+  	@rondas = @ruleta.rounds.length
   	@ultima_ronda = Round.last
   	@apuestas = Play.where(round_id:@ultima_ronda.id)
   	#Consultamos a API si lloverá durante los próximos 7 días
