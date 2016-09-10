@@ -1,0 +1,35 @@
+<h1 class="hola">Cree Jugadores o Espere a que se ejecute la primera ronda del juego</h1>
+
+<div class="game-container">
+	<div class="players-container">
+
+		<p>Jugadores Activos</p>
+
+		<table class="table game">
+		    <thead>
+		      <tr>
+		        <th>Name</th>
+		        <th>Balance</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    	<% @jugadores.each do |a| %>
+			      <tr class="success">
+			        <td>	<%=a.name%>	</td>
+			        <td>	<%=a.money%>	</td>
+			      </tr>
+			    <% end %>
+		    </tbody>
+		</table>
+
+	</div>
+
+		 <%= link_to 'Add Player', new_player_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal', 'data-backdrop' => "false", 'data-keyboard' => "false"}  %>  
+
+	<div class="action-container">
+         <%= link_to 'Edit Players', player_index_path  %>   
+	</div>
+
+	
+            
+</div>

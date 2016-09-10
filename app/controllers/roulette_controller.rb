@@ -27,7 +27,7 @@ class RouletteController < ApplicationController
 		puts "PATH " << path.to_s
 		#Si esta en el home, se actualiza la página
 		respond_to do |format|
-			if last_round.utc < (Time.now  - 3.hours - 3.minutes).utc
+			if last_round.utc < (Time.now  - 3.hours - 3.minutes).utc && ruleta.rounds.length > 0
 				format.js { render "new_round", notice: 'Last Round: ' << Time.now.strftime("%Y-%m-%d %H:%M:%S")}	
 			else
 				format.js { render "nothing", notice: 'Last Round: ' << Time.now.strftime("%Y-%m-%d %H:%M:%S")}	

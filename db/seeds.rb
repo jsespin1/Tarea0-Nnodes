@@ -7,4 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #Se instancia la ruleta principal
-Roulette.create(:last_increase => Time.now, :last_round => Time.now)
+Play.delete_all
+Round.delete_all
+Player.delete_all
+Roulette.delete_all
+Roulette.create(:last_increase => Time.now-3.hours, :last_round => Time.now-3.hours)

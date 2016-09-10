@@ -6,18 +6,24 @@ class ApplicationController < ActionController::Base
   	@ruleta = Roulette.first
   	@rondas = @ruleta.rounds.length
   	@ultima_ronda = Round.last
-  	@apuestas = Play.where(round_id:@ultima_ronda.id)
-  	#Consultamos a API si lloverá durante los próximos 7 días
-  	habra_lluvia = Weather2.forecast_rain
-  	@color = @ultima_ronda.last_color
-	#Arreglo json con las predicciones por dia. Atributos: code,date,day,text
-	@clima = Weather2.get_forecast
-	@pronostico = ""
-	if habra_lluvia
-		@pronostico = "Se pronostica lluvia dentro de los próximos 7 días. Apuestas conservadoras."
-	else
-		@pronostico = "No se anuncian chubascos durante la próxima semana."
-	end
+  	if !@ultima_ronda || Player.where(active:true).length == 0
+  		@jugadores = Player.where(active:true).sort_by{ |t| t.money }.reverse 
+  		render 'empty'
+  	else
+  		@apuestas = Play.where(round_id:@ultima_ronda.id)
+	  	#Consultamos a API si lloverá durante los próximos 7 días
+	  	habra_lluvia = Weather2.forecast_rain
+	  	@color = @ultima_ronda.last_color
+		#Arreglo json con las predicciones por dia. Atributos: code,date,day,text
+		@clima = Weather2.get_forecast
+		@pronostico = ""
+		if habra_lluvia
+			@pronostico = "Se pronostica lluvia dentro de los próximos 7 días. Apuestas conservadoras."
+		else
+			@pronostico = "No se anuncian chubascos durante la próxima semana."
+		end
+  	end
+
   end
 
 
